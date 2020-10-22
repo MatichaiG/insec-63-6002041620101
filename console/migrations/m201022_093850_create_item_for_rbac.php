@@ -19,8 +19,8 @@ class m201022_093850_create_item_for_rbac extends Migration
         $author = $auth->createRole('author');
         $author->description = 'Author';
         $auth->add($author);
-        $superAdmin = $auth->createRole('super-admin');
-        $superAdmin->description = 'Super Admin';
+        $superadmin = $auth->createRole('superAdmin');
+        $superadmin->description = 'Super Admin';
         $auth->add($superadmin);
 
         //print_r($auth);
@@ -34,7 +34,6 @@ class m201022_093850_create_item_for_rbac extends Migration
     {
         //echo "m201022_093850_create_item_for_rbac cannot be reverted.\n";
         $auth = Yii::$app->authManager;
-        
         $admin = $auth->getRole('admin');
         if($admin){
             $auth->remove($admin);
@@ -43,11 +42,11 @@ class m201022_093850_create_item_for_rbac extends Migration
         if($author){
             $auth->remove($author);
         }
-        $superAdmin = $auth->getRole('super-admin');
-        if($author){
-            $auth->remove($superAdmin);
+        $superadmin = $auth->getRole('superAdmin');
+        if($superadmin){
+            $auth->remove($superadmin);
         }
-
+       // echo "m201022_093657_create_item_for_rbac cannot be reverted.\n";
         return true;
     }
 
